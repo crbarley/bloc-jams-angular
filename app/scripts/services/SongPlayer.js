@@ -61,21 +61,26 @@
     * @type {Number}
     */
     SongPlayer.currentTime = null;
-    
+    /**
+    * @desc Current volume of currently playing song
+    * @type {Number}
+    */
+    SongPlayer.volume = null;
     /**
     * @function play
     * @ desc Play current or new song
     * @param {Object} song
     */
     SongPlayer.play = function(song) {
-      song = song || SongPlayer.currentSong;  if(SongPlayer.currentSong !== song) {
+      song = song || SongPlayer.currentSong;
+        if(SongPlayer.currentSong !== song) {
  
-        setSong(song);
-        playSong(song);
+            setSong(song);
+            playSong(song);
             
         } else if (SongPlayer.currentSong === song) {
             if (currentBuzzObject.isPaused()) {
-                currentBuzzObject.play();
+                playSong(song);
             }
         }
      };
@@ -86,8 +91,9 @@
     * @param {Object} song
     */
     SongPlayer.pause = function(song) {
-      song = song || SongPlayer.currentSong;  currentBuzzObject.pause();
-        song.playing = false;
+      song = song || SongPlayer.currentSong;
+        currentBuzzObject.pause();
+            song.playing = false;
     };
 
     /**
@@ -135,6 +141,18 @@
             currentBuzzObject.setTime(time);
         }
     };
+        
+    /**
+    *@function setVolume
+    * @desc Set current volume of currently playing song
+    * @param {Number} volume
+    */
+    SongPlayer.setVolume = function(volume) {
+        if (currentBuzzObject) {
+            currentBuzzObject.setVolume(volume);
+        }
+    };
+        
         
     /**
     * @function stopSong
