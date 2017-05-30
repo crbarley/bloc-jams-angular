@@ -42,6 +42,17 @@
             currentBuzzObject.play();
             song.playing = true;
         }
+        
+        /**
+        * @function stopSong
+        * @desc Stops current song
+        * @ param {Object} song
+        */
+        var stopSong = function(song) {
+        currentBuzzObject.stop();
+        song.playing = null;
+    }
+        
     /**
     * @function getSongIndex
     * @desc Gets the index of a song
@@ -66,6 +77,7 @@
     * @type {Number}
     */
     SongPlayer.volume = null;
+        
     /**
     * @function play
     * @ desc Play current or new song
@@ -141,7 +153,6 @@
             currentBuzzObject.setTime(value);
         }
     };
-        
     /**
     *@function setVolume
     * @desc Set current volume of currently playing song
@@ -151,17 +162,7 @@
         if (currentBuzzObject) {
             currentBuzzObject.setVolume(volume);
         }
-    };
         
-        
-    /**
-    * @function stopSong
-    * @desc Stops current song
-    * @ param {Object} song
-    */
-    var stopSong = function(song) {
-        currentBuzzObject.stop();
-        song.playing = null;
     };
         
         
