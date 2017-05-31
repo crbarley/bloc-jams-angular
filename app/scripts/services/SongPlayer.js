@@ -150,7 +150,7 @@
     */
     SongPlayer.setCurrentTime = function(time) {
         if (currentBuzzObject) {
-            currentBuzzObject.setTime(value);
+            currentBuzzObject.setTime(time);
         }
     };
     /**
